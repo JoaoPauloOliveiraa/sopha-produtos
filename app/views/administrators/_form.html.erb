@@ -1,0 +1,36 @@
+<%= form_with(model: administrator) do |form| %>
+  <% if administrator.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% administrator.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, "Nome", style: "display: block" %>
+    <%= form.text_field :name, class: "form-control form-control-lg" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, "Email", style: "display: block" %>
+    <%= form.text_field :email, class: "form-control form-control-lg" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_hash, "Senha", style: "display: block" %>
+    <%= form.text_field :password_hash, class: "form-control form-control-lg" %>
+  </div>
+
+  <div class="form-group mt-3">
+
+    <% if params["action"] == "edit"%> 
+    <%=form.submit "Alterar", class: "btn btn-success btn-lg" %>
+    <% else %>
+    <%=form.submit "Cadastrar", class: "btn btn-success btn-lg" %>
+    <% end %>
+    <%= link_to "Voltar", administrators_path, class: "btn btn-outline-primary btn-lg" %>
+  </div>
+<% end %>

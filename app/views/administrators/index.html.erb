@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+<%if alert %>
+  <p style="color: red"><%= alert %></p>
+<%end%>
+<div id="administrators">
+<h1>Administradores</h1>
+  <table class="table table-responsive shadow table-hover text-center">
+          <thead class="thead table-dark">
+              <tr role="row">
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+              </tr>
+          </thead>
+          
+          <tbody>
+          <% @administrators.each do |administrator| %>
+            <tr>
+              <td><%= administrator.name %></td>
+              <td><%= administrator.email %></td>
+              <td>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                  <%= link_to "Detalhes", administrator, class: "btn btn-sm btn-secondary"%>
+                  <%= link_to "Editar", edit_administrator_path(administrator), class: "btn btn-sm btn-primary" %>
+                  
+                  <%if @administrator.id != administrator.id%>
+                  <%= button_to "Deletar", administrator, method: :delete, class: "btn btn-sm btn-danger" %>
+                  <%else%>
+                  <%= button_to "Deletar", administrator, method: :delete, class: "btn btn-sm btn-danger disabled" %>
+                  <%end%>  
+                </div>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+  </table>
+  <%= link_to "Cadastrar novo", new_administrator_path, class: "btn btn-lg btn-success" %>
+</div>

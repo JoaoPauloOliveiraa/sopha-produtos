@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+<div class="col-lg-8 mx-auto mt-3 mb-3">
+  <div class="card shadow">
+    <div class="card-header">
+      <h1 class="card-title">Detalhes</h1>
+    </div>
+    <div class="card-body">
+      <%= render @administrator %>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <%= link_to "Voltar", administrators_path, class: "btn btn-primary btn-lg" %>
+      <%admin = JSON.parse(cookies[:crud_sopha])%>
+      <%if @administrator.id != admin['id'].to_i%>
+        <%= button_to "Deletar", @administrator, method: :delete, class: "btn btn-lg btn-outline-danger" %> 
+      <%else%>
+        <%= button_to "Deletar", @administrator, method: :delete, class: "btn btn-lg btn-outline-danger disabled" %>
+      <%end%>  
+      
+      </div>
+    </div>
+  </div>  
+</div>

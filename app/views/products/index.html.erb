@@ -1,14 +1,43 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
-
 <div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
+<h1>Produtos</h1>
+  <table class="table table-responsive shadow table-bordered no-footer table-hover text-center">
+          <thead class="thead table-dark text-center">
+              <tr role="row">
+                <th>Nome</th>
+                <th>Código</th>
+                <th>Marca</th>
+                <th>Data de fabricação</th>
+                <th>Vencimento</th>
+                <th>Preço</th>
+                <th>Preço de custo</th>
+                <th>Ações</th>
+              </tr>
+          </thead>
+          
+          <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.name %></td>
+              <td><%= product.code %></td>          
+              <td><%= product.brand %></td>   
+              <td><%= product.manufactured_at.strftime('%d/%m/%Y') %></td>
+              <td><%= product.due_date %></td>
+              <td><%= product.price %></td>
+              <td><%= product.cost_price %></td>
+              <td>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                  <%= link_to "Detalhes", product, class: "btn btn-sm btn-secondary"%>
+                  <%= link_to "Editar", edit_product_path(product), class: "btn btn-sm btn-primary" %>
+                  <%= button_to "Deletar", product, method: :delete, class: "btn btn-sm btn-danger" %>  
+                </div>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+  </table>
+  <%= link_to "Cadastrar novo", new_product_path, class: "btn btn-lg btn-success" %>
 </div>
 
-<%= link_to "New product", new_product_path %>
+
