@@ -1,0 +1,9 @@
+/tmp/*
+/log/*.log
+/vendor/bundle
+.bash_history
+.byebug_hist
+.pry_history
+docker-compose.yml
+Dockerfile
+.dockerignore

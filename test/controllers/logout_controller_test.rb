@@ -9,6 +9,6 @@ class LogoutControllerTest < ActionDispatch::IntegrationTest
     params = { email: 'teste@email.com', password_hash: '123456' }
     post login_path(params)
     post logout_path
-    assert_redirected_to '/login'
+    assert_redirected_to '/'
   end
 end

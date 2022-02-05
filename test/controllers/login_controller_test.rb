@@ -17,6 +17,6 @@ class LoginControllerTest < ActionDispatch::IntegrationTest
   test 'should redirect to login' do
     params = { email: 'teste@email.com', password_hash: '123' }
     post login_path(params)
-    assert_redirected_to '/login'
+    assert_redirected_to '/'
   end
 end

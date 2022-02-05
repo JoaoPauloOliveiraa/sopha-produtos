@@ -15,7 +15,7 @@ class LoginController < ApplicationController
 
       redirect_to '/products'
     else
-      redirect_to '/login', alert: 'Email ou senha inválidos'
+      redirect_to '/', alert: 'Email ou senha inválidos'
     end
   end
 end

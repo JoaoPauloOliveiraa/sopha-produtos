@@ -4,8 +4,8 @@ default: &default
   timeout: 5000
   username: <%= ENV['POSTGRES_USER'] || 'pgsql' %>
   password: <%= ENV['PGPASSWORD'] || 'psql' %>
-  host: <%= ENV.fetch("POSTGRES_HOST") { "localhost" } %>
-  port: <%= ENV.fetch("POSTGRES_PORT") { 5433 } %>
+  host: <%= ENV.fetch("POSTGRES_HOST") { "db" } %>
+  port: <%= ENV.fetch("POSTGRES_PORT") { 5432 } %>
 
 development:
   <<: *default
@@ -17,8 +17,8 @@ test:
   database: crud_sopha_test
 
 
-production:
-  <<: *default
-  database: crud_sopha_production
-  username: crud_sopha
-  password: <%= ENV["CRUD_SOPHA_DATABASE_PASSWORD"] %>
+# production:
+#   <<: *default
+#   database: crud_sopha_production
+#   username: crud_sopha
+#   password: <%= ENV["CRUD_SOPHA_DATABASE_PASSWORD"] %>
