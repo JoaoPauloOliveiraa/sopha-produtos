@@ -1,24 +1,98 @@
-# README
+# Sopha-produtos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Aplicação desenvolvida para cumprir requisitos do 1° teste no programa de treinamento UniSopha, ofertado pela empresa Sopha Tecnologia!
 
-Things you may want to cover:
+## Executando a aplicação
 
-* Ruby version
+Instale o [docker](https://docs.docker.com/get-docker/) e o [docker-compose](https://docs.docker.com/compose/install/)
 
-* System dependencies
+Instale o [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-* Configuration
+Para clonar o repositório abra o terminal e execute o comando abaixo:
 
-* Database creation
+```bash
+git clone https://github.com/JoaoPauloOliveiraa/sopha-produtos.git
+```
 
-* Database initialization
+Após isso execute os seguinte comandos:
 
-* How to run the test suite
+```bash
+cp .env.example .env
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+docker-compose build
+```
 
-* Deployment instructions
+Se receber alguma mensagem de erro: `ERROR: Service 'sopha.produtos' failed to build : Build failed`
+Execute o comando abaixo para se tornar proprietário do diretório e execute novamente o comando anterior (docker-compose build)
 
-* ...
+```bash
+sudo chown -R $USER:$USER .
+```
+
+Prossiga com os próximos passos
+
+```bash
+docker-compose run --rm sopha.produtos bash
+```
+Esse comando irá abrir um bash dentro do container criado
+
+Então execute os seguintes comandos
+
+```bash
+bundle install
+rails db:create db:migrate db:seed
+```
+
+Após isso aperte Ctrl-D(Linux ou Windows) ou Cmd-D (MacOS)
+
+## Iniciando os containeres
+###### `AVISO: Certifique-se de que as portas 3000 e 5432 não estão ocupadas.`
+
+```bash
+docker-compose up -d
+```
+
+Após isso, você deve obter a seguinte saída no terminal:
+```bash
+Starting sopha-produtos-db ... done
+Starting sopha-produtos    ... done
+```
+
+Para verificar se os containeres estão de pé execute o comando:
+
+```bash
+docker-compose ps
+```
+Esses são os nomes dos containeres seguidos de seus respectivos serviços, executando atualmente:
+
+```bash
+sopha-produtos => sopha.produtos (rails)
+sopha-produtos-db => db (postgres)
+```
+
+Caso algum container estiver mostrando `exit` e algum número na coluna State, veja os logs do container 
+Para ler os logs do container execute:
+
+```bash
+docker logs <nome-do-container>
+```
+
+Para executar a aplicação em modo debugger
+
+```bash
+docker attach sopha-produtos
+```
+---
+
+Entre no browser e digite `localhost:3000`
+
+Depois desses passos você deve ver a aplicação em execução
+
+Para realizar login entre com o usuario e senha:
+
+Usuário
+#### teste@email.com
+Senha
+#### 123456
