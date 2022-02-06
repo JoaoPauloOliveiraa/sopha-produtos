@@ -13,6 +13,11 @@ Para clonar o repositório abra o terminal e execute o comando abaixo:
 ```bash
 git clone https://github.com/JoaoPauloOliveiraa/sopha-produtos.git
 ```
+Entre no diretório sopha-produtos executando o seguinte comando:
+
+```bash
+cd sopha-produtos
+```
 
 Após isso execute os seguinte comandos:
 
