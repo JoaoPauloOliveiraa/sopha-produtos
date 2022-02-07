@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    redirect_to '/login'
+    redirect_to '/'
   end
   
   def current_admin?
